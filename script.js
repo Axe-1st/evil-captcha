@@ -1,39 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const checkbox = document.getElementById('captcha-checkbox');
-  const text = document.getElementById('captcha-text');
-  const captchaBox = document.querySelector("#captcha-box");
-  let attempts = 0;
+const checkbox = document.getElementById('captcha-checkbox');
+const text = document.getElementById('captcha-text');
+const popup = document.getElementById('popup');
 
-  if (checkbox) {
-    checkbox.addEventListener('change', () => {
-      if (checkbox.checked) {
-        attempts++;
+let attempts = 0;
 
-        if (attempts < 3) {
-          // Fail the first 2 attempts
-          text.textContent = 'Try again.';
-          text.style.color = '#d00';
-          checkbox.checked = false;
+checkbox.addEventListener('change', () => {
+  if (checkbox.checked) {
+    attempts++;
 
-        } else {
-          // Third time = trap
-          text.textContent = 'Verifying...';
-          text.style.color = '#333';
+    if (attempts === 1) {
+      text.textContent = 'Verifying...';
+      text.style.color = '#333';
 
-          setTimeout(() => {
-            document.body.classList.add('dark-mode');
-            text.textContent = 'YOU WILL NEVER ESCAPE THE CAPTCHA.';
-            text.style.color = 'red';
-            text.style.fontWeight = 'bold';
-          }, 1500);
-        }
-      }
-    });
-  }
+      setTimeout(() => {
+        popup.classList.remove('hidden');
+        text.textContent = '';
+        checkbox.checked = false;
+      }, 1000);
 
-  if (captchaBox) {
-    captchaBox.addEventListener("click", () => {
-      // your logic here if needed
-    });
+    } else if (attempts === 2) {
+      text.textContent = 'Try again.';
+      text.style.color = '#d00';
+      checkbox.checked = false;
+
+    } else {
+      text.textContent = 'YOU WILL NEVER ESCAPE THE CAPTCHA.';
+      document.body.classList.add('dark-mode');
+      popup.classList.add('hidden');
+    }
   }
 });

@@ -1,86 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Evil CAPTCHA</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #f9f9f9;
-      transition: background-color 1s, color 1s;
-    }
-
-    .dark-mode {
-      background-color: black;
-      color: red;
-    }
-
-    #captcha-box {
-      display: inline-block;
-      border: 1px solid #ccc;
-      padding: 20px;
-      margin-top: 20px;
-    }
-
-    #captcha-text {
-      display: block;
-      margin-top: 10px;
-      font-size: 1.2em;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I'm not a robot</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>I am not a robot</h1>
-
-  <div id="captcha-box">
-    <label>
-      <input type="checkbox" id="captcha-checkbox">
-      <span id="captcha-text">I'm not a robot</span>
-    </label>
+  <div class="captcha-container">
+    <div class="captcha-box">
+      <input type="checkbox" id="captcha-checkbox" />
+      <label for="captcha-checkbox"></label>
+      <span class="captcha-label">I'm not a robot</span>
+      <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="captcha-logo">
+      <span class="recaptcha-badge">reCAPTCHA</span>
+      <span class="recaptcha-links">Privacy - Terms</span>
+    </div>
+    <div id="captcha-text" class="status-text"> </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const checkbox = document.getElementById('captcha-checkbox');
-      const text = document.getElementById('captcha-text');
-      const captchaBox = document.querySelector("#captcha-box");
-      let attempts = 0;
+  <div id="popup" class="popup hidden">
+    <h3>Select all images with traffic lights</h3>
+    <p>(This will never end)</p>
+  </div>
 
-      if (checkbox) {
-        checkbox.addEventListener('change', () => {
-          if (checkbox.checked) {
-            attempts++;
-
-            if (attempts < 3) {
-              // Fail the first 2 attempts
-              text.textContent = 'Try again.';
-              text.style.color = '#d00';
-              checkbox.checked = false;
-
-            } else {
-              // Third time = trap
-              text.textContent = 'Verifying...';
-              text.style.color = '#333';
-
-              setTimeout(() => {
-                document.body.classList.add('dark-mode');
-                text.textContent = 'YOU WILL NEVER ESCAPE THE CAPTCHA.';
-                text.style.color = 'red';
-                text.style.fontWeight = 'bold';
-              }, 1500);
-            }
-          }
-        });
-      }
-
-      if (captchaBox) {
-        captchaBox.addEventListener("click", () => {
-          // optional behavior
-        });
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

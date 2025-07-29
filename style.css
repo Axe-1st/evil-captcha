@@ -1,50 +1,98 @@
 body {
+  font-family: 'Roboto', sans-serif;
   background: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  transition: background-color 2s ease;
 }
 
-body.dark-mode {
-  background-color: black;
+.captcha-container {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  text-align: left;
+  position: relative;
+  width: 320px;
 }
 
 .captcha-box {
-  background: white;
-  border: 1px solid #d3d3d3;
-  padding: 2em;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  text-align: center;
-  width: 300px;
-  transition: background-color 2s ease, color 1s ease;
-}
-
-#captcha-text {
-  font-size: 1.2em;
-  margin-bottom: 1em;
-  color: #333;
-  transition: color 1s ease, font-weight 0.5s ease;
-}
-
-.checkbox-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5em;
-  margin-bottom: 1em;
+  gap: 12px;
 }
 
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+.captcha-box input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
 }
 
-.recaptcha-branding {
-  font-size: 0.75em;
-  color: #aaa;
+.captcha-box label {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #ccc;
+  display: inline-block;
+  background: white;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.captcha-box input[type="checkbox"]:checked + label {
+  background: #4285f4;
+  border-color: #4285f4;
+  background-image: url("data:image/svg+xml,%3Csvg fill='white' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.285 6.708l-11.401 11.4-5.57-5.57 1.414-1.414 4.156 4.156 9.987-9.986z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.captcha-label {
+  font-size: 16px;
+  color: #333;
+  flex: 1;
+}
+
+.captcha-logo {
+  width: 30px;
+  height: auto;
+  margin-left: auto;
+}
+
+.recaptcha-badge {
+  font-size: 10px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.recaptcha-links {
+  font-size: 10px;
+  color: #777;
+}
+
+.status-text {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.dark-mode {
+  background-color: #000;
+  color: red;
+}
+
+.popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.hidden {
+  display: none;
 }
