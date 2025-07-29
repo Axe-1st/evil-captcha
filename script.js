@@ -1,54 +1,41 @@
-let attempts = 0;
+let level = 1;
 
-function startGame() {
-  document.getElementById('warning').style.display = 'none';
-  document.getElementById('captcha-container').style.display = 'block';
+function startCaptcha() {
+  document.getElementById("disclaimer").style.display = "none";
+  document.getElementById("game").style.display = "block";
 }
 
-const checkbox = document.getElementById('captcha-checkbox');
-const text = document.getElementById('captcha-text');
-
-checkbox.addEventListener('change', () => {
-  attempts++;
-
-  if (attempts === 1) {
-    text.textContent = 'Try again.';
-    checkbox.checked = false;
-  } else if (attempts === 2) {
-    text.textContent = 'Select all images with traffic lights.';
-    // fake image grid and selection coming in level 2
-  } else {
-    text.textContent = 'Verifying...';
+document.getElementById("captcha-checkbox")?.addEventListener("change", () => {
+  const text = document.getElementById("captcha-text");
+  if (level === 1) {
+    text.textContent = "Verifying...";
     setTimeout(() => {
-      showRecaptchaBotIntro();
-    }, 2000);
+      text.textContent = "✅ Verified";
+      document.getElementById("bot").style.display = "block";
+    }, 1000);
   }
 });
 
-function showRecaptchaBotIntro() {
-  document.body.innerHTML = `
-    <div class="bot-dialog">
-      <div class="bot-face">👁️👄👁️</div>
-      <p>Hi! I'm ReCaptcha, the new beta bot my owners created.</p>
-      <p>Do you mind if we do some puzzles?</p>
-      <button onclick="respond('uhh')">Uhh</button>
-      <button onclick="respond('okay')">Okay...</button>
-      <button onclick="respond('nah')">Nah</button>
-    </div>
-  `;
+function handleAnswer(answer) {
+  const dialog = document.getElementById("bot-dialog");
+  const container = document.getElementById("puzzle-container");
+
+  if (answer === "uhh") {
+    dialog.textContent = "Don't worry, it's just a short game :)";
+  } else if (answer === "okay") {
+    dialog.textContent = "Yay! Starting Level 2...";
+    container.innerHTML = `<p>Solve this: What has keys but can't open locks?</p><input type="text" id="puzzle-input"><button onclick="checkPuzzle()">Submit</button>`;
+  } else if (answer === "nah") {
+    document.body.innerHTML = `<h1>Too bad 😈</h1><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+  }
 }
 
-function respond(answer) {
-  if (answer === 'uhh') {
-    alert("Don't worry, it's just a short game. This is a one-of-a-kind invitation :)");
-    // load level 2
-  } else if (answer === 'okay') {
-    alert("Yay! Let's begin.");
-    // load level 2 with cheerful music
-  } else if (answer === 'nah') {
-    document.body.innerHTML = '<h1>Wait... what did you just say?</h1>';
-    setTimeout(() => {
-      window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-    }, 2000);
+function checkPuzzle() {
+  const input = document.getElementById("puzzle-input").value.toLowerCase();
+  if (input.includes("piano")) {
+    alert("Correct! Level 3 coming soon...");
+    // TODO: Load level 3
+  } else {
+    alert("Try again.");
   }
 }
