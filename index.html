@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>reCAPTCHA</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>I'm not a robot</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="captcha-container">
-    <div class="captcha-box">
-      <input type="checkbox" id="captcha-checkbox">
-      <label for="captcha-checkbox">I'm not a robot</label>
-      <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="recaptcha-logo">
-      <div class="recaptcha-text">
-        <span>reCAPTCHA</span>
+  <div id="warning">
+    ⚠ Warning: Contains flashing lights and horror elements. This is not affiliated with Google.
+    <button onclick="startGame()">Continue</button>
+  </div>
+
+  <div id="captcha-container" style="display: none;">
+    <div class="recaptcha-box">
+      <div class="top-row">
+        <input type="checkbox" id="captcha-checkbox">
+        <label for="captcha-checkbox">I'm not a robot</label>
+        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="logo">
+      </div>
+      <div class="bottom-row">
+        <small>reCAPTCHA</small>
         <a href="#">Privacy</a> - <a href="#">Terms</a>
       </div>
     </div>
-    <p id="captcha-text"> </p>
-  </div>
-
-  <div class="modal" id="captcha-modal">
-    <div class="modal-content">
-      <h2>Select all images with traffic lights</h2>
-      <p>(This will never end)</p>
-    </div>
+    <p id="captcha-text"></p>
   </div>
 
   <script src="script.js"></script>

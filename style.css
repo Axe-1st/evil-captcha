@@ -1,85 +1,59 @@
 body {
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
   background: #f9f9f9;
-  margin: 0;
-  padding: 2em;
-}
-
-.captcha-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.captcha-box {
+#warning {
+  padding: 20px;
+  border: 1px solid #f00;
+  background: #fff3f3;
+  color: #900;
+  text-align: center;
+}
+
+#warning button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.recaptcha-box {
+  border: 1px solid #ccc;
+  padding: 15px 20px;
+  background: white;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.top-row {
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
-  background: white;
-  padding: 1em;
-  border-radius: 6px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  gap: 0.5em;
-  position: relative;
+  justify-content: space-between;
 }
 
-.captcha-box input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+.top-row input[type="checkbox"] {
+  transform: scale(1.3);
+  margin-right: 10px;
 }
 
-.recaptcha-logo {
+.logo {
   height: 40px;
-  margin-left: auto;
 }
 
-.recaptcha-text {
-  font-size: 10px;
-  color: #888;
-  position: absolute;
-  bottom: -1.5em;
-  right: 0;
-}
-
-.recaptcha-text a {
-  color: #888;
-  text-decoration: none;
-  margin: 0 2px;
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin-top: 10px;
 }
 
 #captcha-text {
-  margin-top: 1em;
+  margin-top: 10px;
   color: #d00;
-  font-weight: bold;
-}
-
-/* Dark mode trap */
-body.dark-mode {
-  background: #111;
-  color: red;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.modal-content {
-  background: white;
-  color: black;
-  padding: 2em;
-  border-radius: 10px;
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-  font-size: 1.2em;
-}
-
-body.dark-mode .modal {
-  display: flex;
 }
