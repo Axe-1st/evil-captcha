@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Verify you are human</title>
+  <title>reCAPTCHA</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="captcha-container">
-    <h2>Verify you are human</h2>
-    <p>Select all squares with <strong>traffic lights</strong>.</p>
-    <div id="grid"></div>
-    <button id="verify-btn">Verify</button>
-    <div id="loading" class="hidden">
-      <span class="spinner"></span>
-      <p>Verifying...</p>
+  <div class="captcha-box" id="captcha-box">
+    <p id="captcha-text">I am not a robot</p>
+    <div class="checkbox-wrapper">
+      <input type="checkbox" id="captcha-checkbox" />
+      <label for="captcha-checkbox">reCAPTCHA</label>
+    </div>
+    <div class="recaptcha-branding">
+      <span>Protected by reCAPTCHA</span>
     </div>
   </div>
 

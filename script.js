@@ -1,35 +1,28 @@
-const grid = document.getElementById('grid');
-const verifyBtn = document.getElementById('verify-btn');
-const loading = document.getElementById('loading');
+const checkbox = document.getElementById('captcha-checkbox');
+const text = document.getElementById('captcha-text');
+let attempts = 0;
 
-const emojis = ['🚗', '🚦', '🏍️', '🛵', '🚕', '🛑', '🚓', '🚲', '🚌'];
-const trafficLightEmoji = '🚦';
+checkbox.addEventListener('change', () => {
+  if (checkbox.checked) {
+    attempts++;
 
-function generateGrid() {
-  grid.innerHTML = '';
-  for (let i = 0; i < 9; i++) {
-    const tile = document.createElement('div');
-    tile.classList.add('tile');
-    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-    tile.textContent = emoji;
-    tile.dataset.emoji = emoji;
-    tile.addEventListener('click', () => {
-      tile.classList.toggle('selected');
-    });
-    grid.appendChild(tile);
+    if (attempts < 3) {
+      // Fail the first 2 attempts
+      text.textContent = 'Try again.';
+      text.style.color = '#d00';
+      checkbox.checked = false;
+
+    } else {
+      // Third time = trap
+      text.textContent = 'Verifying...';
+      text.style.color = '#333';
+
+      setTimeout(() => {
+        document.body.classList.add('dark-mode');
+        text.textContent = 'YOU WILL NEVER ESCAPE THE CAPTCHA.';
+        text.style.color = 'red';
+        text.style.fontWeight = 'bold';
+      }, 1500); // "Verifying..." delay
+    }
   }
-}
-
-verifyBtn.addEventListener('click', () => {
-  verifyBtn.disabled = true;
-  loading.classList.remove('hidden');
-
-  setTimeout(() => {
-    // TODO: Trigger the glitch + phase 2 here later
-    alert("Hmm... something's not right."); // Placeholder
-    loading.classList.add('hidden');
-    verifyBtn.disabled = false;
-  }, 2500);
 });
-
-generateGrid();
