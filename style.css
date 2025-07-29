@@ -1,98 +1,85 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   background: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  margin: 0;
+  padding: 2em;
 }
 
 .captcha-container {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 20px 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.15);
-  text-align: left;
-  position: relative;
-  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .captcha-box {
   display: flex;
   align-items: center;
-  gap: 12px;
+  border: 1px solid #ccc;
+  background: white;
+  padding: 1em;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  gap: 0.5em;
+  position: relative;
 }
 
 .captcha-box input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
-.captcha-box label {
-  width: 22px;
-  height: 22px;
-  border: 2px solid #ccc;
-  display: inline-block;
-  background: white;
-  cursor: pointer;
-  border-radius: 2px;
-}
-
-.captcha-box input[type="checkbox"]:checked + label {
-  background: #4285f4;
-  border-color: #4285f4;
-  background-image: url("data:image/svg+xml,%3Csvg fill='white' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.285 6.708l-11.401 11.4-5.57-5.57 1.414-1.414 4.156 4.156 9.987-9.986z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.captcha-label {
-  font-size: 16px;
-  color: #333;
-  flex: 1;
-}
-
-.captcha-logo {
-  width: 30px;
-  height: auto;
+.recaptcha-logo {
+  height: 40px;
   margin-left: auto;
 }
 
-.recaptcha-badge {
+.recaptcha-text {
   font-size: 10px;
-  color: #666;
-  margin-top: 6px;
+  color: #888;
+  position: absolute;
+  bottom: -1.5em;
+  right: 0;
 }
 
-.recaptcha-links {
-  font-size: 10px;
-  color: #777;
+.recaptcha-text a {
+  color: #888;
+  text-decoration: none;
+  margin: 0 2px;
 }
 
-.status-text {
-  margin-top: 10px;
+#captcha-text {
+  margin-top: 1em;
+  color: #d00;
   font-weight: bold;
 }
 
-.dark-mode {
-  background-color: #000;
+/* Dark mode trap */
+body.dark-mode {
+  background: #111;
   color: red;
 }
 
-.popup {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 16px;
-  margin-top: 10px;
-  width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
 
-.hidden {
-  display: none;
+.modal-content {
+  background: white;
+  color: black;
+  padding: 2em;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  font-size: 1.2em;
+}
+
+body.dark-mode .modal {
+  display: flex;
 }

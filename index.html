@@ -3,26 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>I'm not a robot</title>
+  <title>reCAPTCHA</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="captcha-container">
     <div class="captcha-box">
-      <input type="checkbox" id="captcha-checkbox" />
-      <label for="captcha-checkbox"></label>
-      <span class="captcha-label">I'm not a robot</span>
-      <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="captcha-logo">
-      <span class="recaptcha-badge">reCAPTCHA</span>
-      <span class="recaptcha-links">Privacy - Terms</span>
+      <input type="checkbox" id="captcha-checkbox">
+      <label for="captcha-checkbox">I'm not a robot</label>
+      <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="recaptcha-logo">
+      <div class="recaptcha-text">
+        <span>reCAPTCHA</span>
+        <a href="#">Privacy</a> - <a href="#">Terms</a>
+      </div>
     </div>
-    <div id="captcha-text" class="status-text"> </div>
+    <p id="captcha-text"> </p>
   </div>
 
-  <div id="popup" class="popup hidden">
-    <h3>Select all images with traffic lights</h3>
-    <p>(This will never end)</p>
+  <div class="modal" id="captcha-modal">
+    <div class="modal-content">
+      <h2>Select all images with traffic lights</h2>
+      <p>(This will never end)</p>
+    </div>
   </div>
 
   <script src="script.js"></script>
